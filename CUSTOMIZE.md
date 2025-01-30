@@ -146,7 +146,7 @@ A variety of beautiful theme colors have been selected for you to choose from. T
 
 ## Adding social media information
 
-You can add your social media links by adding the specified information at the `Social integration` section in the [\_config.yml](_config.yml) file. This information will appear at the bottom of the `About` page.
+You can add your social media links by adding the specified information in the [\_data/socials.yml](_data/socials.yml) file. This information will appear at the bottom of the `About` page and in the search results by default, but this could be changed to appear at the header of the page by setting `enable_navbar_social: true` and doesn't appear in the search by setting `socials_in_search: false`, both in [\_config.yml](_config.yml).
 
 ## Adding a newsletter
 
@@ -156,7 +156,18 @@ Depending on your specified footer behavior, the sign up form either will appear
 
 ## Removing content
 
-Since this template have a lot of content, you may want to delete some of it. Here is a list of the main components that you may want to delete, and how to do it. Don't forget if you delete a page, to update the `nav_order` of the remaining pages.
+Since this template have a lot of content, you may want to remove some of it. The easiest way to achieve this and avoid merge conflicts when updating your code (as [pointed by CheariX ](https://github.com/alshedivat/al-folio/pull/2933#issuecomment-2571271117)) is to add the unwanted files to the `excludes` section in your `_config.yml` file instead of actually deleting them, for example:
+
+```yml
+excludes:
+  - _news/announcement_*.md
+  - _pages/blog.md
+  - _posts/
+  - _projects/?_project.md
+  - assets/jupyter/blog.ipynb
+```
+
+Here is a list of the main components that you may want to delete, and how to do it. Don't forget if you delete a page to update the `nav_order` of the remaining pages.
 
 ### Removing the blog page
 
@@ -165,7 +176,8 @@ To remove the blog, you have to:
 - delete [\_posts](_posts/) directory
 - delete blog page [\_pages/blog.md](_pages/blog.md)
 - remove reference to blog page in our [\_pages/dropdown.md](_pages/dropdown.md)
-- remove the `Blog` section in the [\_config.yml](_config.yml) file and the related parts, like the `jekyll-archives` and `latest_posts`
+- remove the `latest_posts` part in [\_pages/about.md](_pages/about.md)
+- remove the `Blog` section in the [\_config.yml](_config.yml) file and the related parts, like the `jekyll-archives`
 
 You can also:
 
@@ -184,7 +196,7 @@ To remove the news section, you can:
 
 - delete the [\_news](_news/) directory
 - delete the file [\_includes/news.liquid](_includes/news.liquid) and the references to it in the [\_pages/about.md](_pages/about.md)
-- remove the `announcements` part in [\_config.yml](_config.yml)
+- remove the `announcements` part in [\_pages/about.md](_pages/about.md)
 - remove the news part in the `Collections` section in the [\_config.yml](_config.yml) file
 
 ### Removing the projects page
