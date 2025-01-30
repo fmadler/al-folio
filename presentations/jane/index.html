@@ -1,0 +1,36 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <title>blank</title> <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. "> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <link rel="stylesheet" href="/al-folio/specs/reveal.js/dist/reveal.css"> <link rel="stylesheet" href="/al-folio/specs/reveal.js/dist/theme/black.css" id="theme"> <link rel="stylesheet" href="/al-folio/assets/css/mermaid.css"> <link rel="stylesheet" href="specs/reveal.js/lib/css/zenburn.css%20"> <script>
+			document.write( '<link rel="stylesheet" href="specs/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script> <!--[if lt IE 9]><script src="specs/reveal.js/lib/js/html5shiv.js"></script><![endif]--> </head> <body> <div class="reveal"> <div class="slides"> !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- !!!- <br> Slides: <br> Presentations: <h2>Jane Doe - Developer</h2> <p></p> <h2 id="welcome">Welcome</h2> <p>Welcome to the jekyll-reveal.js example presentation.</p> <h2>Jane Doe - Developer</h2> <p></p> <h1 id="jane">Jane</h1> <p>Jane has worked on Jekyll for the past <em>five years</em>.!!!</p> <br> Staff: <h2>Jane Doe - Developer</h2> <p></p> <p>Jane has worked on Jekyll for the past <em>five years</em>.</p> </div> </div> <script src="specs/reveal.js/lib/js/head.min.js"></script> <script src="specs/reveal.js/dist/reveal.js"></script> <script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'black' //Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'specs/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'specs/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'specs/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'specs/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'specs/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					
+					{ src: 'https://cdn.jsdelivr.net/npm/mermaid@11.0.2/dist/mermaid.min.js'},
+					{ src: '/al-folio/assets/js/mermaid/reveal-js-mermaid-plugin.js'},
+					
+					
+					{ src: 'specs/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					
+					
+				]
+			});
+
+		</script> </body> </html>

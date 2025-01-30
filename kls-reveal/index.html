@@ -1,0 +1,49 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> <title>Kohlantstats architecture presentation</title> <link rel="stylesheet" href="/al-folio/specs/reveal.js/dist/reveal.css"> <link rel="stylesheet" href="/al-folio/specs/reveal.js/dist/theme/black.css" id="theme"> <link rel="stylesheet" href="/al-folio/specs/reveal.js/plugin/highlight/monokai.css"> </head> <body> <div class="reveal"> <div class="slides"> <section> <h2 id="welcome">Welcome</h2> <p>Welcome to the jekyll-reveal.js example presentation.</p> </section> <section> <h2 id="slide-2">Slide 2</h2> <p>This is the second slide. And it’s just another file inside the _posts-directory.</p> <p>It is identified as slide 2, because it has a “2” after the mandatory date-part (0000-01-01) in its filename. (It’s called 0000-01-02-slides.md)</p> <hr> <p>This is a third slide, although we’re still in 0000-01-02-slides.md.</p> </section> <section> <h2 id="fragments">Fragments</h2> <p>It’s also possible to do fragments.</p> <ul> <li>Start the line with ‘+’ instead of ‘-’ for your fragment item like this:<br> <code class="language-plaintext highlighter-rouge">+ This is a fragment</code> </li> <li>This is a fragment</li> <li>Your fragment may contain the ‘+’ character <ul> <li>You can also indent fragments</li> </ul> </li> </ul> <fragment></fragment> <p>You can use &lt;fragment/&gt; to step other content.</p> </section> <section> <h2 id="fragments">Fragments</h2> <p>It’s also possible to do fragments.</p> <ul> <li>Start the line with ‘+’ instead of ‘-’ for your fragment item like this:<br> <code class="language-plaintext highlighter-rouge">+ This is a fragment</code> </li> <li>This is a fragment</li> <li>Your fragment may contain the ‘+’ character <ul> <li>You can also indent fragments</li> </ul> </li> </ul> <fragment></fragment> <p>You can use &lt;fragment/&gt; to step other content.</p> <section><p>para 1</p></section> <section> <p>para 2</p> <h3> heading 3</h3> <p class="fragment">Fade in</p> <p class="fragment fade-out">Fade out</p> <p class="fragment highlight-red">Highlight red</p> <p class="fragment fade-in-then-out">Fade in, then out</p> <p class="fragment fade-up">Slide up while fading in</p> </section> </section> <section> <p>With syntax highlighting for your code:</p> <pre>
+  <code class="python">
+import pprint
+
+class MyClass(object):
+    def __init__(self):
+        self.a = 1
+
+    @classmethod
+    def some_classmethod(cls, a):
+        self.a = a
+
+if __name__ == "__main__":
+    # This is a comment
+    pprint.pprint({'Key1': 0x34, 'Key2': 'Hi'})
+</code>
+</pre> </section> </div> </div> <footer style="position:fixed; bottom:0; width:100%; text-align:center;"> <p>Created by Your Florian Adler | Kohlantstats Presentation | 2024</p> </footer> <script src="/al-folio/specs/reveal.js/dist/reveal.js"></script> <script src="/al-folio/specs/reveal.js/plugin/notes/notes.js"></script> <script src="/al-folio/specs/reveal.js/plugin/markdown/markdown.js"></script> <script src="/al-folio/specs/reveal.js/plugin/highlight/highlight.js"></script> <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    function loadExternalSlides() {
+        const sections = document.querySelectorAll('[data-include]');
+
+        sections.forEach(async (section) => {
+            const file = section.getAttribute('data-include');
+            const response = await fetch(file);
+            const content = await response.text();
+            section.innerHTML = content;
+        });
+
+        // Wait for all content to load, then reinitialize Reveal.js
+        Promise.all(sections).then(() => {
+            // Re-initialize Reveal.js after content is loaded
+            Reveal.sync(); // Sync slides with loaded content
+        });
+    }
+
+    // Then load external slides
+    loadExternalSlides();
+    // Initialize Reveal.js first
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+
+
+</script> </body> </html>
