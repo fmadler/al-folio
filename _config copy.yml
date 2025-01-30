@@ -2,10 +2,10 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
-first_name: You
-middle_name: R.
-last_name: Name
+title: Kohlantstats # the website title (if blank, full name will be used instead)
+first_name: KLS
+middle_name: xxx
+last_name: xx
 contact_note: >
   You can even add a little note about which of these is the best way to reach you.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -18,7 +18,7 @@ keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your o
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
-url: https://alshedivat.github.io # the base hostname & protocol for your site
+url: https://fmadler.github.io # the base hostname & protocol for your site
 baseurl: /al-folio # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -152,12 +152,6 @@ collections:
   projects:
     output: true
     permalink: /:collection/:title/
-  slides:
-    output: true
-  staff_members:
-    output: true
-  presentations:
-    output: true
 
 announcements:
   enabled: true
@@ -276,39 +270,9 @@ jekyll-archives:
 display_tags: ["formatting", "images", "links", "math", "code", "blockquotes"] # these tags will be displayed on the front page of your blog
 display_categories: ["external-services"] # these categories will be displayed on the front page of your blog
 
-
-# -----------------------------------------------------------------------------
-# revealjs
-# -----------------------------------------------------------------------------
-
-# The Reveal theme
-reveal:
-  # Reveal.js subdirectory
-  reveal_path: specs/reveal.js/
-  # Path to the used theme (defaults to the Reveal.js standard theme path)
-  reveal_theme_path: specs/reveal.js/dist/theme/ 
-  reveal_theme: black.css
-
-  # The Reveal transition 
-  reveal_transition: default
-
-  # Embed Server-side speaker notes?
-  reveal_notes_server: false
-
-  # mermaid.js diagram integration
-  mermaid_diagrams: true
-  mermaid_theme: dark # See https://mermaid-js.github.io/mermaid/#/theming?id=deployable-themes
-  # mermaid_version: 11.0.2
-
-  # Exclude directories and/or files from the conversion
-
-  #markdown_ext: ignoreme
-
-
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
 # -----------------------------------------------------------------------------
-
 
 scholar:
   last_name: [Einstein]
@@ -438,6 +402,50 @@ enable_project_categories: true # enables categorization of projects into multip
 enable_medium_zoom: true # enables image zoom feature (as on medium.com)
 enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
 enable_video_embedding: false # enables video embedding for bibtex entries. If false, the button opens the video link in a new window.
+
+# -----------------------------------------------------------------------------
+# Revealjs Features
+# -----------------------------------------------------------------------------
+
+# The Reveal theme
+reveal_theme: black.css
+
+# The Reveal transition
+reveal_transition: default
+
+# Path to the used theme (defaults to the Reveal.js standard theme path)
+reveal_theme_path: specs/reveal.js/css/theme/ 
+
+# Additional custom CSS paths
+extra_css: 
+
+# Custom CSS for highlighting (defaults to reveal.js/lib/css/zenburn.css)
+highlight_style_sheet: 
+
+# Embed Server-side speaker notes?
+reveal_notes_server: false
+
+# Additional reveal.js options
+reveal_options: 
+
+# Additional reveal.js dependencies
+reveal_dependencies:
+
+# Reveal.js subdirectory
+reveal_path: specs/reveal.js/
+
+# mermaid.js diagram integration
+mermaid_diagrams: true
+mermaid_theme: dark # See https://mermaid-js.github.io/mermaid/#/theming?id=deployable-themes
+# mermaid_version: 11.0.2
+
+# Exclude directories and/or files from the conversion
+
+# Don't change anything below
+#markdown: kramdown
+#highlighter: rouge
+markdown_ext: ignoreme
+
 
 # -----------------------------------------------------------------------------
 # Library versions

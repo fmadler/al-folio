@@ -1,0 +1,84 @@
+{%
+	assign mermaid_version = site.mermaid_version | default: '11.0.2'
+%}<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Kohlantstats architecture presentation</title>
+
+		<link rel="stylesheet" href="{{ site.reveal.reveal_path | relative_url }}dist/reveal.css">
+		<link rel="stylesheet" href="{{ site.reveal.reveal_theme_path | relative_url }}{{ site.reveal.reveal_theme }}" id="theme">
+
+		<link rel="stylesheet" href="{{ site.reveal.reveal_path | relative_url }}plugin/highlight/monokai.css">
+    <!-- Theme used for syntax highlighted code 
+	 TODO
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+	-->
+</head>
+<body>
+<!-- Presentation container -->
+<div class="reveal">
+    <div class="slides">
+        <!-- OK section by specifing the files -->
+        {% if page.slides %}
+        {% for slide in page.slides %}
+            {% if slide.content %}
+            {% capture profile_content %}{% include_relative {{ slide.content }} %}{% endcapture %}
+                <section>
+                {{ profile_content | markdownify }}
+                </section>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <!-- end OK section -->
+    </div>
+</div>
+
+<!-- Footer -->
+<footer style="position:fixed; bottom:0; width:100%; text-align:center;">
+    <p>Created by Your Florian Adler | Kohlantstats Presentation | 2024</p>
+</footer>
+
+<script src="{{ site.reveal.reveal_path | relative_url }}dist/reveal.js"></script>
+
+<script src="{{ site.reveal.reveal_path | relative_url }}plugin/notes/notes.js"></script>
+<script src="{{ site.reveal.reveal_path | relative_url }}plugin/markdown/markdown.js"></script>
+<script src="{{ site.reveal.reveal_path | relative_url }}plugin/highlight/highlight.js"></script>
+
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    function loadExternalSlides() {
+        const sections = document.querySelectorAll('[data-include]');
+
+        sections.forEach(async (section) => {
+            const file = section.getAttribute('data-include');
+            const response = await fetch(file);
+            const content = await response.text();
+            section.innerHTML = content;
+        });
+
+        // Wait for all content to load, then reinitialize Reveal.js
+        Promise.all(sections).then(() => {
+            // Re-initialize Reveal.js after content is loaded
+            Reveal.sync(); // Sync slides with loaded content
+        });
+    }
+
+    // Then load external slides
+    loadExternalSlides();
+    // Initialize Reveal.js first
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+
+
+</script>
+</body>
+</html>
