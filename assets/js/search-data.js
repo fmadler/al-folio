@@ -107,13 +107,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/al-folio/kls-generation/";
           },
-        },{id: "nav-kls-2026",
-          title: "KLS 2026",
-          description: "Generation of sql call to fill the app.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/al-folio/kls-generation-2026/";
-          },
         },{id: "post-a-post-with-image-galleries",
       
         title: "a post with image galleries",
