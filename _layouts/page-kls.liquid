@@ -1,0 +1,70 @@
+---
+layout: default
+---
+{% if page._styles %}
+    <!-- Page/Post style -->
+    <style type="text/css">
+        {{ page._styles }}
+    </style>
+{% endif %}
+
+<div class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-description">{{ page.description }}</p>
+    </header>
+
+    <article>
+        {{ content }}
+    </article>
+
+    <hr/>
+
+    <h1>Programme SQL</h1>
+    call create_programme('{{ page.kls_edition.nom }}', '{{ page.kls_edition.web-path }}', '{{ page.kls_edition.annee }}', {{ page.kls_edition.nbr-participants }}, {{ page.kls_edition.duree }}, '{{ page.kls_edition.lieu }}', '{{ page.kls_edition.lieu-web-path }}', 1);<br/>
+
+    <h1>Participant SQL</h1>
+
+    {% for aventurier in page.kls_edition.aventuriers %}
+        call add_participant('{{ page.kls_edition.web-path }}','{{ aventurier.nom }}','','{{ aventurier.web-path }}','{{ aventurier.sex }}',{{ aventurier.age }}, null, 0, '', '{{ aventurier.profession }}');<br/>
+    {% endfor  %}
+
+    <h1>Epreuves</h1>
+    Année {{ page.kls_edition.annee }} {{ page.kls_edition.name }} {{ page.kls_edition.web-path }}<br/>
+    {% for jour in page.kls_edition.jours %}
+        -- jour {{ jour.nu }}<br/>
+        {% for epreuve in jour.epreuves %}
+            -- épreuve {{ epreuve.web-path }}<br/>
+            call create_game('{{ epreuve.web-path }}','{{ epreuve.epreuve }}','{{ epreuve.web-path }}','{{ epreuve.description }}','{{ epreuve.participation-type }}', '{{ epreuve.type }}', {{ epreuve.nu }}, {{ jour.nu }}, '{{ epreuve.recompense }}', '{{ epreuve.skills }}');<br/>
+
+            {% for p in epreuve.participants %}
+                {% assign position = p.game-position %}
+                {% if p.game-position == nil %}
+                    {% assign position = 0 %}
+                {% endif %}
+                {% assign pType = p.participation-type %}
+                {% if p.participation-type == nil %}
+                    {% assign pType = 'participant' %}
+                {% endif %}
+                call create_game_participation('{{ p.participant }}', '{{ page.kls_edition.web-path }}','{{ epreuve.tribu-web-path }}','{{ p.participant }}','{{ p.type_as_var }}', '{{ pType }}', {{position}}, '{{ p.recompense }}');<br/>
+
+            {% endfor  %}
+        {% endfor  %}
+    {% endfor  %}
+    <br/>
+
+    {% for p in page.participants %}
+        {{ p.participant }} - {{ p.game-position }} <br/>
+    {% endfor  %}
+
+    {% if page.related_publications %}
+        <h2>References</h2>
+        <div class="publications">
+            {% bibliography --cited_in_order %}
+        </div>
+    {% endif %}
+
+    {% if site.giscus and page.giscus_comments %}
+        {% include giscus.liquid %}
+    {% endif %}
+</div>
