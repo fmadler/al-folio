@@ -182,6 +182,40 @@ kls_edition:
                     - participant: jessica
                       game-position: 12
                       recompense: 'elimination-du-dernier'
+        - jour: 2
+          constitution-equipe:
+              - equipe: 'jaune'
+                surnom: 'kalao'
+                equipiers:
+                    - nom: guillaume
+                    - nom: hugo
+                    - nom: ulrich
+                    - nom: lola
+                    - nom: cynthia
+                    
+              - equipe: 'rouge'
+                web-path: 'rouge-2026'
+                surnom: 'lahoy'
+                equipiers:
+                    - nom: guillaume
+                    - nom: hugo               
+        - jour: 7
+          nu: 7
+          meteo: 'beau temps'
+          epreuves: 
+                 - epreuve: 'Régate'
+                  description : "Construction de radeau et régate"
+                  participation-type: 'collectif'
+                  type: 'confort'
+                  web-path: 'regate-2026'
+                  nu: 5
+                  tribu-web-path: 'blanc-2025'
+                  recompense: 'totem,elimination-du-dernier'
+                  skills: 'precision,dexterite'
+                  victoire: 'rouge'
+                  participants:
+                    - participant: jerome
+                      game-position: 1                     
 
 ---
 <h1>
