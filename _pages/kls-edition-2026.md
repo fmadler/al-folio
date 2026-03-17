@@ -191,8 +191,7 @@ kls_edition:
                     - nom: hugo
                     - nom: ulrich
                     - nom: lola
-                    - nom: cynthia
-                    
+                    - nom: cynthia                
               - equipe: 'rouge'
                 web-path: 'rouge-2026'
                 surnom: 'lahoy'
@@ -210,13 +209,28 @@ kls_edition:
                   web-path: 'regate-2026'
                   nu: 5
                   tribu-web-path: 'blanc-2025'
-                  recompense: 'totem,elimination-du-dernier'
+                  recompense: 'radeau,kit-de-peche'
                   skills: 'precision,dexterite'
-                  victoire: 'rouge'
+                  victoire: 'jaune'
                   participants:
                     - participant: jerome
                       game-position: 1                     
-
+        - jour: 8
+          nu: 7
+          meteo: 'beau temps'
+          epreuves: 
+                 - epreuve: 'Flambeaux'
+                  description : "Parcours flambeaux"
+                  participation-type: 'collectif'
+                  type: 'confort'
+                  web-path: 'flambeaux-2026'
+                  nu: 7
+                  recompense: 'totem'
+                  skills: 'force,rapidite'
+                  victoire: 'rouge'
+                  participants:
+                    - participant: jerome
+                      game-position: 1 
 ---
 <h1>
 KLS generation sample
