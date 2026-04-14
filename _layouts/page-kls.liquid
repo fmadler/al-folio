@@ -29,13 +29,29 @@ layout: default
         call add_participant('{{ page.kls_edition.web-path }}','{{ aventurier.nom }}','','{{ aventurier.web-path }}','{{ aventurier.sex }}',{{ aventurier.age }}, null, 0, '', '{{ aventurier.profession }}');<br/>
     {% endfor  %}
 
-    <h1>Epreuves</h1>
+    <h1>Equipes</h1>
+    {% for equipe in page.kls_edition.equipes %}
+        call create_team('{{ page.kls_edition.web-path }}','{{ equipe.equipe }}','{{ equipe.web-path }}','{{ equipe.alias }}',{{ equipe.debut }}, {{ equipe.debut }});<br/>
+    {% endfor  %}
+
     Année {{ page.kls_edition.annee }} {{ page.kls_edition.name }} {{ page.kls_edition.web-path }}<br/>
     {% for jour in page.kls_edition.jours %}
         -- jour {{ jour.nu }}<br/>
+
+        {% for compo in jour.composition-equipe %}
+            <h2>Composition d'equipe</h2>
+
+        {{ compo.equipe-web-path }} <br/>
+            {% for participant in compo.participants %}
+            call create_participant_entrance ('{{ page.kls_edition.web-path }}','{{ participant.web-path }}','{{ compo.equipe-web-path }}',{{ jour.nu }},'{{ compo.raison }}', @participant_team_id);
+            <br/>
+          {% endfor  %}
+        {% endfor  %}
+        <h2>Epreuves!!</h2>
         {% for epreuve in jour.epreuves %}
             -- épreuve {{ epreuve.web-path }}<br/>
-            call create_game('{{ epreuve.web-path }}','{{ epreuve.epreuve }}','{{ epreuve.web-path }}','{{ epreuve.description }}','{{ epreuve.participation-type }}', '{{ epreuve.type }}', {{ epreuve.nu }}, {{ jour.nu }}, '{{ epreuve.recompense }}', '{{ epreuve.skills }}');<br/>
+            call create_game('{{ epreuve.web-path }}','{{ epreuve.epreuve }}','{{ epreuve.web-path }}','{{ epreuve.description }}','{{ epreuve.participation-type }}', '{{ epreuve.type }}', {{ epreuve.nu }}, {{ jour.nu }}, '{{ epreuve.recompense }}', '{{ epreuve.skills }}');
+            <br/>
 
             {% for p in epreuve.participants %}
                 {% assign position = p.game-position %}
@@ -46,7 +62,8 @@ layout: default
                 {% if p.participation-type == nil %}
                     {% assign pType = 'participant' %}
                 {% endif %}
-                call create_game_participation('{{ p.participant }}', '{{ page.kls_edition.web-path }}','{{ epreuve.tribu-web-path }}','{{ p.participant }}','{{ p.type_as_var }}', '{{ pType }}', {{position}}, '{{ p.recompense }}');<br/>
+                call create_game_participation('{{ p.participant }}', '{{ page.kls_edition.web-path }}','{{ epreuve.tribu-web-path }}','{{ p.participant }}','{{ p.type_as_var }}', '{{ pType }}', {{position}}, '{{ p.recompense }}');
+                <br/>
 
             {% endfor  %}
         {% endfor  %}
